@@ -71,7 +71,7 @@ class Question {
             this[name] = data[name];
     }
 
-    answer(value) {
+    setAnswer(value) {
         switch (this.type) {
             case CONST.QUESTION_TYPE.MULTIPLE_CHOISES:
                 if (!Array.isArray(value) || value.some(a => !Number.isInteger(a)))
