@@ -94,6 +94,27 @@ class Question {
     }
 }
 
+class Discout {
+    constructor (data) {
+        for (let name in data)
+            this[name] = data[name];
+    }
+
+    generateCoupon() {
+        return new Promise((resolve, reject) => {
+            shit.generateCoupon(this.id, response => {
+                if (response.status) {
+                    resolve(response);
+                } else {
+                    reject(response);
+                }
+            }).catch((response) => {
+                reject(response);
+            });
+        });
+    }
+}
+
 export default {
     getCategories: () => {
         return new Promise((resolve, reject) => {
@@ -104,6 +125,55 @@ export default {
                     reject(response);
                 }
             }).catch((response) => {
+                reject(response);
+            });
+        });
+    },
+
+    getStats: () => {
+        return new Promise((resolve, reject) => {
+            shit.getStats(response => {
+                if (response.status) {
+                    resolve(response);
+                } else {
+                    reject(response);
+                }
+            }).catch((response) => {
+                reject(response);
+            });
+        });
+    },
+
+    getDiscounts: () => {
+        return new Promise((resolve, reject) => {
+            shit.getStats(response => {
+                if (response.status) {
+                    let result = {};
+                    for (let name in response)
+                        if (name != 'discounts')
+                            result[name] = response[name];
+                    result.discounts = response.discounts.map(a => {
+                        return new Discout(a);
+                    });
+                    resolve(result);
+                } else {
+                    reject(response);
+                }
+            }).catch(response => {
+                reject(response);
+            });
+        });
+    },
+
+    getCoupons: () => {
+        return new Promise((resolve, reject) => {
+            shit.getStats(response => {
+                if (response.status) {
+                    resolve(response);
+                } else {
+                    reject(response);
+                }
+            }).catch(response => {
                 reject(response);
             });
         });

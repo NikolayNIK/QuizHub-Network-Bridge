@@ -48,6 +48,18 @@ export default {
         return fuck({action: 'testVerification'}, callback);
     },
 
+    getStats: (callback) => {
+        return fuck({action: 'global.getStats'}, callback);
+    },
+
+    getDiscounts: (callback) => {
+        return fuck({action: 'global.getDiscounts'}, callback);
+    },
+
+    getCoupons: (callback) => {
+        return fuck({action: 'global.getCoupons'}, callback);
+    },
+
     getCategories: (callback) => {
         return fuck({action: 'global.getCategories'}, callback);
     },
@@ -71,6 +83,13 @@ export default {
             action: 'quiz.endRun',
             quizId: quiz,
             answers: answers
+        }, callback);
+    },
+
+    generateCoupon: (discount, callback) => {
+        return fuck({
+            action: 'coupons.generateNew',
+            discoutId: discount
         }, callback);
     }
 };
