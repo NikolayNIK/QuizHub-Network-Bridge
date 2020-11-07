@@ -39,27 +39,27 @@ function test() {
                             debugger;
                             // успешное завершение забега
                             console.log(response);
-                        }).catch(shit => {
+                        }).catch(thing => {
                             debugger;
                             // ошибка завершения забега
-                            console.error(shit);
+                            console.error(thing);
                         });
-                    }).catch(shit => {
+                    }).catch(thing => {
                         debugger;
                         // ошибка начала забега
-                        console.error(shit);
+                        console.error(thing);
                     });
                 });
-            }).catch(shit => {
+            }).catch(thing => {
                 debugger;
                 // ошибка получения викторин
-                console.error(shit);
+                console.error(thing);
             });
         });
-    }).catch(shit => {
+    }).catch(thing => {
         debugger;
         // ошибка получения категорий
-        console.error(shit);
+        console.error(thing);
     });
 }
 

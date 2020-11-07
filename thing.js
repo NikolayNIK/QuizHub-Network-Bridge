@@ -34,52 +34,52 @@ async function getUser() {
 }
 
 // заебашить запрос на сервер
-async function fuck (request, callback) {
+async function request (request, callback) {
     request.user = await getUser();
     return $.post(CONST.URL, JSON.stringify(request), callback, 'json');
 }
 
 export default {
-    fuck: (request, callback) => {
-        return fuck(request, callback);
+    request: (request, callback) => {
+        return request(request, callback);
     },
 
     testVerification: (callback) => {
-        return fuck({action: 'testVerification'}, callback);
+        return request({action: 'testVerification'}, callback);
     },
 
     getStats: (callback) => {
-        return fuck({action: 'global.getStats'}, callback);
+        return request({action: 'global.getStats'}, callback);
     },
 
     getDiscounts: (callback) => {
-        return fuck({action: 'global.getDiscounts'}, callback);
+        return request({action: 'global.getDiscounts'}, callback);
     },
 
     getCoupons: (callback) => {
-        return fuck({action: 'global.getCoupons'}, callback);
+        return request({action: 'global.getCoupons'}, callback);
     },
 
     getCategories: (callback) => {
-        return fuck({action: 'global.getCategories'}, callback);
+        return request({action: 'global.getCategories'}, callback);
     },
 
     getQuizzes: (category, callback) => {
-        return fuck({
+        return request({
             action: 'global.getQuizzes',
             categoryId: category
         }, callback);
     },
 
     startRun: (quiz, callback) => {
-        return fuck({
+        return request({
             action: 'quiz.startRun',
             quizId: quiz
         }, callback);
     },
 
     endRun: (quiz, answers, callback) => {
-        return fuck({
+        return request({
             action: 'quiz.endRun',
             quizId: quiz,
             answers: answers
@@ -87,7 +87,7 @@ export default {
     },
 
     generateCoupon: (discount, callback) => {
-        return fuck({
+        return request({
             action: 'coupons.generateNew',
             discountId: discount
         }, callback);

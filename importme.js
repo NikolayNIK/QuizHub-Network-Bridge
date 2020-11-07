@@ -1,4 +1,4 @@
-import shit from './shit';
+import thing from './thing';
 
 import CONST from './const';
 
@@ -10,7 +10,7 @@ class Category {
 
     getQuizzes() {
         return new Promise((resolve, reject) => {
-            shit.getQuizzes(this.id, (response) => {
+            thing.getQuizzes(this.id, (response) => {
                 if (response.status) {
                     resolve(response.quizzes.map(crap => new Quiz(crap)));
                 } else {
@@ -31,7 +31,7 @@ class Quiz {
 
     start() {
         return new Promise((resolve, reject) => {
-            shit.startRun(this.id, (response) => {
+            thing.startRun(this.id, (response) => {
                 if (response.status) {
                     resolve(new Run(this, response));
                 } else {
@@ -52,7 +52,7 @@ class Run {
 
     end() {
         return new Promise((resolve, reject) => {
-            shit.endRun(this.quiz.id, this.questions.map(q => { return {id: q.id, answer: q.answer} }), (response) => {
+            thing.endRun(this.quiz.id, this.questions.map(q => { return {id: q.id, answer: q.answer} }), (response) => {
                 if (response.status) {
                     resolve(response);
                 } else {
@@ -102,7 +102,7 @@ class Discout {
 
     generateCoupon() {
         return new Promise((resolve, reject) => {
-            shit.generateCoupon(this.id, response => {
+            thing.generateCoupon(this.id, response => {
                 if (response.status) {
                     resolve(response);
                 } else {
@@ -118,7 +118,7 @@ class Discout {
 export default {
     getCategories: () => {
         return new Promise((resolve, reject) => {
-            shit.getCategories((response) => {
+            thing.getCategories((response) => {
                 if (response.status) {
                     resolve(response.categories.map(crap => new Category(crap)));
                 } else {
@@ -132,7 +132,7 @@ export default {
 
     getStats: () => {
         return new Promise((resolve, reject) => {
-            shit.getStats(response => {
+            thing.getStats(response => {
                 if (response.status) {
                     resolve(response);
                 } else {
@@ -146,7 +146,7 @@ export default {
 
     getDiscounts: () => {
         return new Promise((resolve, reject) => {
-            shit.getDiscounts(response => {
+            thing.getDiscounts(response => {
                 if (response.status) {
                     let result = {};
                     for (let name in response)
@@ -167,7 +167,7 @@ export default {
 
     getCoupons: () => {
         return new Promise((resolve, reject) => {
-            shit.getCoupons(response => {
+            thing.getCoupons(response => {
                 if (response.status) {
                     resolve(response);
                 } else {
