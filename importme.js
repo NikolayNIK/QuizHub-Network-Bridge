@@ -33,7 +33,7 @@ class Quiz {
         return new Promise((resolve, reject) => {
             shit.startRun(this.id, (response) => {
                 if (response.status) {
-                    resolve(new Run(this.id, response));
+                    resolve(new Run(this, response));
                 } else {
                     reject(response);
                 }
@@ -52,7 +52,7 @@ class Run {
 
     end() {
         return new Promise((resolve, reject) => {
-            shit.endRun(this.quiz, this.questions.map(q => { return {id: q.id, answer: q.answer} }), (response) => {
+            shit.endRun(this.quiz.id, this.questions.map(q => { return {id: q.id, answer: q.answer} }), (response) => {
                 if (response.status) {
                     resolve(response);
                 } else {
@@ -146,7 +146,7 @@ export default {
 
     getDiscounts: () => {
         return new Promise((resolve, reject) => {
-            shit.getStats(response => {
+            shit.getDiscounts(response => {
                 if (response.status) {
                     let result = {};
                     for (let name in response)
@@ -167,7 +167,7 @@ export default {
 
     getCoupons: () => {
         return new Promise((resolve, reject) => {
-            shit.getStats(response => {
+            shit.getCoupons(response => {
                 if (response.status) {
                     resolve(response);
                 } else {
