@@ -89,7 +89,7 @@ export default {
     generateCoupon: (discount, callback) => {
         return fuck({
             action: 'coupons.generateNew',
-            discoutId: discount
+            discountId: discount
         }, callback);
     }
 };
