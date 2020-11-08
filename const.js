@@ -1,5 +1,5 @@
 export default {
-    APP_ID: 7653333,
+    APP_ID: 7653100,
     URL: 'https://vpn.savok.pw',
     QUESTION_TYPE: {
         MULTIPLE_CHOISES: 1,
