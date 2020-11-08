@@ -1,5 +1,6 @@
-import thing from './thing';
+// ООП обертка функций для работы с сервером
 
+import thing from './thing';
 import CONST from './const';
 
 class Category {

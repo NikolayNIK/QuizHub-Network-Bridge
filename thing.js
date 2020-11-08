@@ -1,3 +1,5 @@
+// функции для работы с сервером 
+
 import $ from 'jquery';
 import bridge from '@vkontakte/vk-bridge';
 import CONST from './const';
@@ -33,7 +35,6 @@ async function getUser() {
     return user ? user : await fetchUser();
 }
 
-// заебашить запрос на сервер
 async function request (request, callback) {
     request.user = await getUser();
     return $.post(CONST.URL, JSON.stringify(request), callback, 'json');
